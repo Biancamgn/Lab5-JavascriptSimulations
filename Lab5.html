@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5</title>
+    <link rel="stylesheet" href="lab5.css">
+    
+</head>
+<body>
+
+    <div class="main-header">
+        <h1>Laboratory Activity 5: JavaScript Simulations</h1>
+        <p>Bianca Louise Manganaan</p>
+    </div>
+
+
+    <div class="tabs">
+        <div class="tab-btn active" onclick="showTab(1)">1</div>
+        <div class="tab-btn" onclick="showTab(2)">2</div>
+        <div class="tab-btn" onclick="showTab(3)">3</div>
+        <div class="tab-btn" onclick="showTab(4)">4</div>
+        <div class="tab-btn" onclick="showTab(5)">5</div>
+        <div class="tab-btn" onclick="showTab(6)">6</div>
+        <div class="tab-btn" onclick="showTab(7)">7</div>
+        <div class="tab-btn" onclick="showTab(8)">8</div>
+        <div class="tab-btn" onclick="showTab(9)">9</div>
+        <div class="tab-btn" onclick="showTab(10)">10</div>
+    </div>
+
+    <!-- ==================== EXERCISE 1 ==================== -->
+    <div class="tab-content active" id="tab1">
+        <div class="container">
+            <h2>Exercise 1: Sum of Array of Integers</h2>
+            <div class="array-display">
+                <p><strong>Array Elements:</strong></p>
+                <p id="arrayElements"></p>
+            </div>
+            <div class="result-box">
+                <p>Sum = <span id="sumResult"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 2 ==================== -->
+    <div class="tab-content" id="tab2">
+        <div class="container">
+            <h2>Exercise 2: Leap Year Checker</h2>
+            <label>Enter a year:</label>
+            <input type="number" id="yearInput" value="2024">
+            <button onclick="leapYear()">Check</button>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 3 ==================== -->
+    <div class="tab-content" id="tab3">
+        <div class="container">
+            <h2>Exercise 3: Odd or Even (0 to 15)</h2>
+            <div id="oddEvenResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 4 ==================== -->
+    <div class="tab-content" id="tab4">
+        <div class="container">
+            <h2>Exercise 4: Multiplication & Division</h2>
+            <label>Enter First Number:</label>
+            <input type="number" id="num1">
+            <label>Enter Second Number:</label>
+            <input type="number" id="num2">
+            <div class="btn-group">
+                <button onclick="multiplyBy()">Multiply</button>
+                <button class="btn-secondary" onclick="divideBy()">Divide</button>
+            </div>
+            <div class="result-box" id="multDivResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 5 ==================== -->
+    <div class="tab-content" id="tab5">
+        <div class="container">
+            <h2>Exercise 5: Temperature Converter</h2>
+            <div class="section-box">
+                <h3>Fahrenheit to Celsius</h3>
+                <label>Fahrenheit:</label>
+                <input type="number" id="Far">
+                <button onclick="FartoCen()">Convert to Celsius</button>
+                <p class="result-text" id="celResult"></p>
+            </div>
+            <div class="section-box">
+                <h3>Celsius to Fahrenheit</h3>
+                <label>Celsius:</label>
+                <input type="number" id="Cen">
+                <button onclick="CentoFar()">Convert to Fahrenheit</button>
+                <p class="result-text" id="farResult"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 6 ==================== -->
+    <div class="tab-content" id="tab6">
+        <div class="container">
+            <h2>Exercise 6: Reverse a Number</h2>
+            <label>Enter a Number:</label>
+            <input type="number" id="revNum">
+            <button onclick="rev_num()">Reverse</button>
+            <div class="result-box" id="revResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 7 ==================== -->
+    <div class="tab-content" id="tab7">
+        <div class="container">
+            <h2>Exercise 7: Palindrome Checker</h2>
+            <label>Enter a String:</label>
+            <input type="text" id="palStr">
+            <button onclick="myFunction()">Check</button>
+            <div class="result-box" id="palResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 8 ==================== -->
+    <div class="tab-content" id="tab8">
+        <div class="container">
+            <h2>Exercise 8: First Character Uppercase Check</h2>
+            <div id="upperResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 9 ==================== -->
+    <div class="tab-content" id="tab9">
+        <div class="container">
+            <h2>Exercise 9: Set Background Color of Paragraph</h2>
+            <p id="para9">This is a sample paragraph. Click the buttons below to change its background color.</p>
+            <div class="color-btn-group">
+                <button class="color-btn c-red" onclick="set_background('red')">Red</button>
+                <button class="color-btn c-green" onclick="set_background('green')">Green</button>
+                <button class="color-btn c-blue" onclick="set_background('blue')">Blue</button>
+                <button class="color-btn c-yellow" onclick="set_background('yellow')">Yellow</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EXERCISE 10 ==================== -->
+    <div class="tab-content" id="tab10">
+        <div class="container">
+            <h2>Exercise 10: Mobile Number Validation</h2>
+            <label>Enter Mobile Number:</label>
+            <input type="text" id="mobileNo" placeholder="e.g. 09171234567">
+            <button onclick="MobileNoValidation()">Validate</button>
+            <div class="result-box" id="mobileResult"></div>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // ===== TABS =====
+        function showTab(num) {
+            var contents = document.querySelectorAll('.tab-content');
+            var btns = document.querySelectorAll('.tab-btn');
+
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+                btns[i].classList.remove('active');
+            }
+
+            document.getElementById('tab' + num).classList.add('active');
+            btns[num - 1].classList.add('active');
+        }
+
+        // ===== EXERCISE 1: Sum of Array =====
+        var array = [10, 20, 30, 40, 50, 60];
+
+        document.getElementById("arrayElements").innerHTML = "[" + array.join(", ") + "]";
+
+        var sum = 0;
+        for (var i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+
+        document.getElementById("sumResult").innerHTML = sum;
+
+        console.log("Array: " + array);
+        console.log("Sum of array elements: " + sum);
+
+        // ===== EXERCISE 2: Leap Year =====
+        function leapYear() {
+            var year = parseInt(document.getElementById("yearInput").value);
+
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                alert(year + " is a Leap Year.");
+            } else {
+                alert(year + " is not a Leap Year.");
+            }
+        }
+
+        // ===== EXERCISE 3: Odd or Even =====
+        var oddEvenOutput = "";
+        for (var i = 0; i <= 15; i++) {
+            if (i % 2 == 0) {
+                oddEvenOutput += '<div class="item even-item">' + i + ' is Even</div>';
+            } else {
+                oddEvenOutput += '<div class="item odd-item">' + i + ' is Odd</div>';
+            }
+        }
+        document.getElementById("oddEvenResult").innerHTML = oddEvenOutput;
+
+        // ===== EXERCISE 4: Multiply & Divide =====
+        function multiplyBy() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var result = num1 * num2;
+            document.getElementById("multDivResult").innerHTML = num1 + " × " + num2 + " = <b>" + result + "</b>";
+        }
+
+        function divideBy() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            if (num2 == 0) {
+                document.getElementById("multDivResult").innerHTML = "Cannot divide by zero!";
+            } else {
+                var result = num1 / num2;
+                document.getElementById("multDivResult").innerHTML = num1 + " ÷ " + num2 + " = <b>" + result + "</b>";
+            }
+        }
+
+        // ===== EXERCISE 5: Temperature Converter =====
+        function FartoCen() {
+            var far = parseFloat(document.getElementById("Far").value);
+            var cel = (far - 32) * 5 / 9;
+            document.getElementById("celResult").innerHTML = far + "°F = " + cel.toFixed(2) + "°C";
+        }
+
+        function CentoFar() {
+            var cen = parseFloat(document.getElementById("Cen").value);
+            var far = (cen * 9 / 5) + 32;
+            document.getElementById("farResult").innerHTML = cen + "°C = " + far.toFixed(2) + "°F";
+        }
+
+        // ===== EXERCISE 6: Reverse Number =====
+        function rev_num() {
+            var num = document.getElementById("revNum").value;
+            var reversed = "";
+
+            for (var i = num.length - 1; i >= 0; i--) {
+                reversed += num[i];
+            }
+
+            document.getElementById("revResult").innerHTML =
+                "Original Number: <b>" + num + "</b><br>Reversed Number: <b>" + reversed + "</b>";
+        }
+
+        // ===== EXERCISE 7: Palindrome =====
+        function checkPalindrome(str) {
+            var reversed = str.split("").reverse().join("");
+            if (str == reversed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function myFunction() {
+            var str = document.getElementById("palStr").value;
+            var result = checkPalindrome(str);
+
+            if (result) {
+                document.getElementById("palResult").innerHTML = '"' + str + '" is a Palindrome.';
+            } else {
+                document.getElementById("palResult").innerHTML = '"' + str + '" is not a Palindrome.';
+            }
+        }
+
+        // ===== EXERCISE 8: Uppercase Check =====
+        function upper_case(str) {
+            var firstChar = str.charAt(0);
+            if (firstChar == firstChar.toUpperCase() && firstChar != firstChar.toLowerCase()) {
+                return '<div class="check-upper is-upper"> "' + str + '": First character is Uppercase.</div>';
+            } else {
+                return '<div class="check-upper not-upper"> "' + str + '": First character is not Uppercase.</div>';
+            }
+        }
+
+        var upperOutput = "";
+        upperOutput += upper_case("Bianca");
+        upperOutput += upper_case("javascript");
+        upperOutput += upper_case("Milktea");
+        upperOutput += upper_case("dlsu");
+        document.getElementById("upperResult").innerHTML = upperOutput;
+
+        // ===== EXERCISE 9: Background Color =====
+        function set_background(color) {
+            var para = document.getElementById("para9");
+            para.style.backgroundColor = color;
+            if (color == "yellow") {
+                para.style.color = "#333";
+            } else {
+                para.style.color = "#fff";
+            }
+        }
+
+        // ===== EXERCISE 10: Mobile Validation =====
+        function MobileNoValidation() {
+            var mobileNo = document.getElementById("mobileNo").value;
+            var pattern = /^[0-9]{11}$/;
+            var resultEl = document.getElementById("mobileResult");
+
+            if (pattern.test(mobileNo)) {
+                resultEl.innerHTML = mobileNo + " is a valid Mobile Number.";
+                resultEl.className = "result-box valid-msg";
+            } else {
+                resultEl.innerHTML = mobileNo + " is not a valid Mobile Number. Please enter an 11-digit number.";
+                resultEl.className = "result-box invalid-msg";
+            }
+        }
+    </script>
+
+</body>
+</html>
